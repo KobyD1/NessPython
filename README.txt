@@ -1,0 +1,1 @@
+pytest --browser chromium --browser firefox -n auto

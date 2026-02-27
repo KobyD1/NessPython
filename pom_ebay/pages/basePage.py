@@ -23,6 +23,5 @@ class BasePage:
 
     def smart_fill(self,locators_list,text):
         element = self.find_smart_element(locators_list)
-
         element.fill(str(text))
 

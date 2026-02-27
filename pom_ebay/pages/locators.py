@@ -4,8 +4,9 @@ class welcomePageLocators:
     products_elements = "a.s-card__link.image-treatment"
     found_text_locator = "div[class*='srp-controls srp-controls--with-list']"
 
+
 class advPageLocators:
-    search_button_text="Search"
+    search_button_text = "Search"
     min_price_id = "[id='s0-1-20-5[2]-@range-comp[]-@range-textbox[]-textbox']"
 
     min_price_locators = [
@@ -22,15 +23,15 @@ class advPageLocators:
         '[id="_nkw"]',
         '[name="_nkw"]',
         '[data-testid="_nkw"]'
-
     ]
+
     search_button_locators = [
         'button.btn btn--primary',
         'div.field adv-keywords__btn-help'
-
     ]
+
 
 class productPageLocators:
     DROP_DOWN_TEXT = ":Select"
-    PRICE_TEXT ="ApproximatelyILS"
-    IMAGE_ID="#PicturePanel"
+    PRICE_TEXT = "ApproximatelyILS"
+    IMAGE_ID = "#PicturePanel"

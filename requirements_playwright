@@ -3,3 +3,4 @@ pytest-playwright == 0.7.1
 pytest == 8.0.0
 pytest-xdist
 allure-pytest
+allure

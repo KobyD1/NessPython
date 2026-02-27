@@ -1,9 +1,12 @@
 class welcomePageLocators:
     adv_link_text = "Advanced"
     results_elements = "div.su-card-container__header"
+    products_elements = "a.s-card__link.image-treatment"
+    found_text_locator = "div[class*='srp-controls srp-controls--with-list']"
 
 class advPageLocators:
     search_button_text="Search"
+    min_price_id = "[id='s0-1-20-5[2]-@range-comp[]-@range-textbox[]-textbox']"
 
     min_price_locators = [
         "[id='s0-1-20-5[2]-@range-comp[]-@range-textbox[]-textbox']",

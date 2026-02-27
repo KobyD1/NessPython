@@ -1,8 +1,22 @@
+import allure
 import pytest
 from playwright.sync_api import Browser, Page
 
-from pom_ebay.pages.advanced_page import advancedPage
-from pom_ebay.pages.welcome_page import welcomePage
+
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    result = outcome.get_result()
+
+    if result.when == "call" and result.failed:
+        page = item.funcargs.get("page")
+        if page:
+            screenshot = page.screenshot()
+            allure.attach(
+                screenshot,
+                name="Failure Screenshot",
+                attachment_type=allure.attachment_type.PNG
+            )
 
 
 @pytest.fixture(scope="function")
@@ -22,20 +36,6 @@ def setup_playwright(browser: Browser, browser_name: str):
             print(f"#### Test end on {browser_name} ####")
 
 
-import allure
-import pytest
 
 
-@pytest.hookimpl(tryfirst=True, hookwrapper=True)
-def pytest_runtest_makereport(item, call):
-    outcome = yield
-    report = outcome.get_result()
 
-    if report.when == 'call' and report.failed:
-        page = item.funcargs.get('page')  # Assuming you use the 'page' fixture
-        if page:
-            allure.attach(
-                page.screenshot(full_page=True),
-                name="screenshot_on_failure",
-                attachment_type=allure.attachment_type.PNG
-            )

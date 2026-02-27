@@ -16,6 +16,7 @@ class advancedPage():
 
         print (f"Trying to search between {min_price} and {max_price}")
         with allure.step(f"Trying to search between {min_price} and {max_price}") :
+            self.page.locator(advPageLocators.min_price_id).wait_for(state="visible")
 
             self.base_page.smart_fill(advPageLocators.min_price_locators,min_price)
             self.base_page.smart_fill(advPageLocators.max_price_locators,max_price)

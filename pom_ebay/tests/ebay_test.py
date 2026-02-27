@@ -16,6 +16,8 @@ class TesteBay():
         welcome_page = welcomePage(page,context)
         adv_page= advancedPage(page)
         # welcome_page.login_with_user_password("abc@gmail.com","123456")
+        welcome_page.click_on_popup_if_exist()
+        assert 4 == 5
         welcome_page.click_on_adv_link()
 
         adv_page.search_for_item_by_price(ITEM_TO_FIND,MIN_PRICE,MAX_PRICE)

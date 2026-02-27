@@ -1,6 +1,4 @@
-pytest --browser chromium --browser firefox -n auto
-
-
+python -m pytest --browser chromium --browser firefox -n auto --alluredir=allure-results --screenshot only-on-failure --video retain-on-failure --output=test-results
 
 
 scoop install allure

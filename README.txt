@@ -28,3 +28,7 @@ globals - for globals parameters
 req. - for needed modules
 pytest.ini - init files for pytest (not in use )
 
+
+5. the following issues implement but did not combined into test due security issue (blocking by ebay)
+login
+add to cart - final steps

@@ -1,5 +1,6 @@
 class welcomePageLocators:
     adv_link_text = "Advanced"
+    results_elements = "div.su-card-container__header"
 
 class advPageLocators:
     search_button_text="Search"
@@ -25,3 +26,8 @@ class advPageLocators:
         'div.field adv-keywords__btn-help'
 
     ]
+
+class productPageLocators:
+    DROP_DOWN_TEXT = ":Select"
+    PRICE_TEXT ="ApproximatelyILS"
+    IMAGE_ID="#PicturePanel"

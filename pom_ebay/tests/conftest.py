@@ -17,7 +17,7 @@ def setup_playwright(browser: Browser, browser_name: str):
 
 
 
-    yield page
+    yield page,context
 
     page.close()
     context.close()

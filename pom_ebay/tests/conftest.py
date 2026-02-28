@@ -1,5 +1,4 @@
 from datetime import datetime
-from playwright.sync_api import sync_playwright, expect
 
 import pytest
 import allure
@@ -44,6 +43,3 @@ def setup_playwright(browser: Browser, browser_name: str):
         page.close()
         context.close()
         print(f"#### Test end on {browser_name} ####")
-
-
-

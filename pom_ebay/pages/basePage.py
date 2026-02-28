@@ -5,7 +5,7 @@ class BasePage:
     def find_smart_element(self, locators):
         last_exception = None
 
-        for  locator in locators:
+        for locator in locators:
             try:
                 element = self.page.locator(locator)
                 if element.is_visible():
@@ -21,7 +21,6 @@ class BasePage:
         element = self.find_smart_element(locators_list)
         element.click()
 
-    def smart_fill(self,locators_list,text):
+    def smart_fill(self, locators_list, text):
         element = self.find_smart_element(locators_list)
         element.fill(str(text))
-

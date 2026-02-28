@@ -1,6 +1,11 @@
+from datetime import datetime
+from playwright.sync_api import sync_playwright, expect
+
 import pytest
 import allure
 from playwright.sync_api import Browser
+
+from pom_ebay.globals import URL
 
 
 @pytest.hookimpl(hookwrapper=True)
@@ -8,18 +13,18 @@ def pytest_runtest_makereport(item, call):
     outcome = yield
     result = outcome.get_result()
 
-    # רק אם הטסט נכשל בשלב ההרצה
     if result.when == "call" and result.failed:
-        # לוקחים את ה-fixture שלך שמחזיר (page, context)
         fixture_value = item.funcargs.get("setup_playwright")
 
         if fixture_value:
-            page = fixture_value[0]  # ה-page הוא האיבר הראשון בטאפל
+            page = fixture_value[0]
 
             screenshot = page.screenshot()
+            timestamp = datetime.now().strftime("%d-%H-%M-%S")
+
             allure.attach(
                 screenshot,
-                name="Failure Screenshot",
+                name=f"Failure_screenshot_{timestamp}",
                 attachment_type=allure.attachment_type.PNG
             )
 
@@ -31,7 +36,7 @@ def setup_playwright(browser: Browser, browser_name: str):
     with allure.step("Starting test"):
         context = browser.new_context(viewport={"width": 1920, "height": 1080})
         page = context.new_page()
-        page.goto("https://www.ebay.com/")
+        page.goto(URL)
 
         yield page, context
 
@@ -39,3 +44,6 @@ def setup_playwright(browser: Browser, browser_name: str):
         page.close()
         context.close()
         print(f"#### Test end on {browser_name} ####")
+
+
+

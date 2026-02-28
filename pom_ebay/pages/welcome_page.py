@@ -1,6 +1,7 @@
 import allure
 from playwright.sync_api import expect
 
+from pom_ebay.pages.basePage import BasePage
 from pom_ebay.pages.locators import welcomePageLocators
 
 
@@ -9,6 +10,8 @@ class welcomePage():
     def __init__(self, page, context):
         self.page = page
         self.context = context
+        self.base_page = BasePage(page)
+
 
     def click_on_adv_link(self):
         with allure.step("Clicking Adv. button and verify for success "):
@@ -31,8 +34,8 @@ class welcomePage():
     def click_on_popup_if_exist(self):
         try:
             with allure.step("Clicking on popup button if appears"):
-                button = self.page.locator("button.btn.submit-button.btn--primary btn--fluid")
-                button.click()
+
+                self.base_page.smart_click(self,welcomePageLocators.shipping_locators)
         except:
             print("Pop up did not appears ")
             pass

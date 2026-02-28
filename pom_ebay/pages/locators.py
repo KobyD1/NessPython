@@ -3,6 +3,9 @@ class welcomePageLocators:
     results_elements = "div.su-card-container__header"
     products_elements = "a.s-card__link.image-treatment"
     found_text_locator = "div[class*='srp-controls srp-controls--with-list']"
+    shipping_locators = [
+        "button.btn.submit-button.btn--primary btn--fluid"
+    ]
 
 
 class advPageLocators:

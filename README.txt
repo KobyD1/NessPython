@@ -1,7 +1,7 @@
 
 
 1 . in order to run parallel with allure and screen capture in case of failure run :
-
+define globals/IS_HEADLESS = False (True is for easy debugging )
 python -m pytest --browser chromium --browser firefox -n auto --alluredir=allure-results --screenshot only-on-failure
 
 
@@ -34,3 +34,6 @@ login
 add to cart - final steps
 
 6. screen capture for allure running at the root of this folder
+7. open issues
+7.1 sometimes there is popup for shipping , it still is not allways clicked (by using smart click )
+example at shipping.bmp

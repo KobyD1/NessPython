@@ -4,9 +4,16 @@ import pytest
 import allure
 from playwright.sync_api import Browser
 
-from pom_ebay.globals import URL
+from pom_ebay.globals import URL, IS_HEADLESS
 
 
+@pytest.fixture(scope="session")
+def browser_type_launch_args(browser_name):
+
+    return {
+        "headless": IS_HEADLESS,
+        "slow_mo": 0 if IS_HEADLESS else 500
+    }
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
     outcome = yield
